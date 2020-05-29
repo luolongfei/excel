@@ -34,6 +34,7 @@ target_file_name = r'C:\Users\luolongf\Desktop\一年级招生名册.xls'
 workbook = xlrd.open_workbook(target_file_name, formatting_info=True)
 target_wb = xlutils_copy(workbook)
 target_ws = target_wb.get_sheet('中心校')
+# tmp_ws = target_wb.get_sheet('Sheet1')
 
 print('已读取所需表格信息，开始处理...')
 
@@ -108,7 +109,7 @@ for row in all_origin_cells:
 
 target_wb.save(target_file_name)
 
-print(f'大班共 {len(all_origin_cells) + 2} 人，可就读一年级的共 {ok_num + 1} 人，另外有 {len(error_ID)} 位同学身份证号有误，无法判断是否满足升学条件，他们分别是：')
+print(f'大班共 {len(all_origin_cells)} 人，可就读一年级的共 {ok_num} 人，另外有 {len(error_ID)} 位同学身份证号有误，无法判断是否满足升学条件，他们分别是：')
 for ID, name in error_ID.items():
     print(f'{name}：{ID}')
 
